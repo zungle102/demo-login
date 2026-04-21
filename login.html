@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Login Page</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #f3f6fb, #dfe7f3);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1f2937;
+    }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 24px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-align: center;
+    }
+    p.subtitle {
+      margin: 0 0 24px;
+      text-align: center;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+    .demo-box {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+    button {
+      width: 100%;
+      padding: 13px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    .message {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+    .success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    .footer-note {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Demo Login</h1>
+      <p class="subtitle">A simple client-side login page for classroom demonstrations or GitHub Pages.</p>
+
+      <div class="demo-box">
+        <strong>Default credentials</strong><br>
+        Username: <code>student@demo.com</code><br>
+        Password: <code>P@ssw0rd</code>
+      </div>
+
+      <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="email" id="username" name="username" placeholder="Enter username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div id="successMessage" class="message success">
+        Login successful. Welcome, student!
+      </div>
+
+      <div id="errorMessage" class="message error">
+        Invalid username or password. Try the demo credentials shown above.
+      </div>
+
+      <div class="footer-note">
+        This page checks credentials in the browser only. It is not secure for real authentication.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const validUsername = 'student@demo.com';
+    const validPassword = 'P@ssw0rd';
+
+    const form = document.getElementById('loginForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+
+      if (username === validUsername && password === validPassword) {
+        successMessage.style.display = 'block';
+        form.reset();
+      } else {
+        errorMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
